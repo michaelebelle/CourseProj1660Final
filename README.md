@@ -1,12 +1,12 @@
 # CourseProj1660Final
 Walkthrough of How I Complete Project Option 1 for 1660 
-1.Get the Docker Containers 
+1. Build Main App
 > I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
 > Built this applications container and stored it to gcr with these commands:
-> 1. git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
-> 2. cd kubernetes-engine-samples/hello-app
-> 3. Changed main application to display the messages that I want in the hello.go file 
-> 4. docker build -t REGION-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v1 .
+> a. git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
+> b. cd kubernetes-engine-samples/hello-app
+> c. Changed main application to display the messages that I want in the hello.go file 
+> d. docker build -t REGION-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v1 .
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
 3. For all images other then main applications I pulled, tagged, then pushed to gcr 
 > Example Commands for Jupyter Image: docker pull jupyter<br/> 
