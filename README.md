@@ -16,9 +16,11 @@ Walkthrough of How I Complete Project Option 1 for 1660
     a. Command: gcloud container clusters create-auto my-cluster
 5. Set the project ID
     a. Command: export PROJECT_ID=test-app1660
-6. Deployed containers in GCR to my-cluster. Set replicas to 1 as well with 10 percent of cpu
-> For hadoop namenodes and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env <br/>
-> Example Command for Jupyter: kubectl create deployment jupyter --image=jupyter/datascience-notebook
+6. Deployed containers in GCR to my-cluster. I editted the datanode to have two replicas while the rest were editted to have 1 replicas.
+> For hadoop namenode and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env (First 9 Lines) I deployed these by going to container registry >> deploy >> added ports >> added env variables >> then continued<br/>
+> Add this env variable for namenode: - CLUSTER_NAME=test
+> Add this env variable for datanode: SERVICE_PRECONDITION: "namenode:9870"
+> Example Command for Jupyter (Variation of these commands were used for all containers except for hadoop datanodes and namenode): kubectl create deployment jupyter --image=jupyter/datascience-notebook 
 > kubectl scale deployment jupyter --replicas=1
 > kubectl autoscale deployment jupyter --cpu-percent=10 --min=1 --max=5
 7. Edit yaml files so they use 250m cpu and 1Gi memory so that I had enough for all 
