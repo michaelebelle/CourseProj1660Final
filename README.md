@@ -2,18 +2,27 @@
 Walkthrough of How I Complete Project Option 1 for 1660 
 1.Get the Docker Containers 
 > I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
+> Built this applications container and stored it to gcr with these commands:
+> 1. git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
+> 2. cd kubernetes-engine-samples/hello-app
+> 3. Changed main application to display the messages that I want in the hello.go file 
+> 4. docker build -t REGION-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v1 .
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
-3. For all four images pulled, tagged, then pushed to gcr 
+3. For all images other then main applications I pulled, tagged, then pushed to gcr 
 > Example Commands for Jupyter Image: docker pull jupyter<br/> 
 > docker tag jupyter gcr.io/cs1660proj/jupyter<br/>
 > docker push gcr.io/cs1660proj/jupyter<br/>
 4. Created my cluster named my-cluster, set to autopilot 
     a. Command: gcloud container clusters create-auto my-cluster
-5. Deployed containers in GCR to my-cluster.
+5. Set the project ID
+    a. Command: export PROJECT_ID=test-app1660
+6. Deployed containers in GCR to my-cluster. Set replicas to 1 as well with 10 percent of cpu
 > For hadoop namenodes and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env <br/>
 > Example Command for Jupyter: kubectl create deployment jupyter --image=jupyter/datascience-notebook
-6. Edit yaml files so they use 250m cpu and 1Gi memory so that I had enough for all 
-7. Expose the pods.
+> kubectl scale deployment jupyter --replicas=1
+> kubectl autoscale deployment jupyter --cpu-percent=10 --min=1 --max=5
+7. Edit yaml files so they use 250m cpu and 1Gi memory so that I had enough for all 
+8. Expose the pods.
 > Jupyter was exposed to port 8888 <br/>
 > Sonarqube: 9000 <br/>
 > Main application: 8080 <br/>
@@ -21,7 +30,7 @@ Walkthrough of How I Complete Project Option 1 for 1660
 > Hadoop: 9870:9000 <br/>
 > Example Command for Jupyter: kubectl expose deployment jupyter --name=jupyter-service --type=LoadBalancer --port 80 --target-port 8888 <br/>
     *For hadoop I manually created the service so I could expose both ports.
-8. Update the Main Terminal Application so that it displays the links for all the pods 
+9. Update the Main Terminal Application so that it displays the links for all the pods 
 > Commands: kubectl get svc (to see the external ip addresses) <br/>
 > docker build -t us-east1-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v2 . <br/>
 > docker push us-east1-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v2 <br/>
