@@ -20,7 +20,8 @@ Walkthrough of How I Complete Project Option 1 for 1660
 > For hadoop namenode and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env (First 9 Lines) I deployed these by going to container registry >> deploy >> added ports >> added env variables >> then continued<br/>
 > Add this env variable for namenode: - CLUSTER_NAME=test
 > Add this env variable for datanode: SERVICE_PRECONDITION: "namenode:9870"
-> Example Command for Jupyter (Variation of these commands were used for all containers except for hadoop datanodes and namenode): kubectl create deployment jupyter --image=jupyter/datascience-notebook 
+> Example Commands for Jupyter (Variation of these commands were used for all containers except for hadoop datanodes and namenode): <br/>
+> kubectl create deployment jupyter --image=jupyter/datascience-notebook 
 > kubectl scale deployment jupyter --replicas=1
 > kubectl autoscale deployment jupyter --cpu-percent=10 --min=1 --max=5
 7. Edit yaml files so they use 250m cpu and 1Gi memory so that I had enough for all 
