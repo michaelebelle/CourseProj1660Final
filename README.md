@@ -1,6 +1,5 @@
 # CourseProj1660Final
-Walkthrough of Course Project 
-Here are the steps I used in order to complete the Course Project 
+Walkthrough of How I Complete Project Option 1 for 1660 
 1.Get the Docker Containers 
 > I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
@@ -11,7 +10,7 @@ Here are the steps I used in order to complete the Course Project
 4. Created my cluster named my-cluster, set to autopilot 
     a. Command: gcloud container clusters create-auto my-cluster
 5. Deployed containers in GCR to my-cluster.
-> For hadoop namenodes and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env 
+> For hadoop namenodes and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env <br/>
 > Example Command for Jupyter: kubectl create deployment jupyter --image=jupyter/datascience-notebook
 6. Edit yaml files so they use 250m cpu and 1Gi memory so that I had enough for all 
 7. Expose the pods.
