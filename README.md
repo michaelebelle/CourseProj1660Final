@@ -1,4 +1,4 @@
-# CourseProj1660Final\
+# CourseProj1660Final
 Walkthrough of Course Project\
 Here are the steps I used in order to complete the Course Project\
 1.Get the Docker Containers\
