@@ -1,14 +1,14 @@
 # CourseProj1660Final
-Walkthrough of Course Project \
-Here are the steps I used in order to complete the Course Project \
-1.Get the Docker Containers \
-> I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. \
-2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. \
-3. For all four images pulled, tagged, then pushed to gcr \
-> Example Commands for Jupyter Image: docker pull jupyter \
-> docker tag jupyter gcr.io/cs1660proj/jupyter \
-> docker push gcr.io/cs1660proj/jupyter \
-4. Created my cluster named my-cluster, set to autopilot \
+Walkthrough of Course Project 
+Here are the steps I used in order to complete the Course Project 
+1.Get the Docker Containers 
+> I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
+2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
+3. For all four images pulled, tagged, then pushed to gcr 
+> Example Commands for Jupyter Image: docker pull jupyter 
+> docker tag jupyter gcr.io/cs1660proj/jupyter 
+> docker push gcr.io/cs1660proj/jupyter 
+4. Created my cluster named my-cluster, set to autopilot 
     a. Command: gcloud container clusters create-auto my-cluster
 5. Deployed containers in GCR to my-cluster.\
 > For hadoop namenodes and datanodes I had to add environment variables that were within this file: https://github.com/big-data-europe/docker-hadoop/blob/master/hadoop.env \
