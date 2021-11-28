@@ -5,9 +5,9 @@ Here are the steps I used in order to complete the Course Project
 > I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
 3. For all four images pulled, tagged, then pushed to gcr 
-> Example Commands for Jupyter Image: docker pull jupyter \  
-> docker tag jupyter gcr.io/cs1660proj/jupyter \
-> docker push gcr.io/cs1660proj/jupyter \
+> Example Commands for Jupyter Image: docker pull jupyter<br/> 
+> docker tag jupyter gcr.io/cs1660proj/jupyter<br/>
+> docker push gcr.io/cs1660proj/jupyter<br/>
 4. Created my cluster named my-cluster, set to autopilot 
     a. Command: gcloud container clusters create-auto my-cluster
 5. Deployed containers in GCR to my-cluster.
