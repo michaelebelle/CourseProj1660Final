@@ -2,7 +2,7 @@
 Walkthrough of Course Project\
 Here are the steps I used in order to complete the Course Project\
 1.Get the Docker Containers\
-    a. I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. \
+> I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. \
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter.\
 3. For all four images pulled, tagged, then pushed to gcr\
     a. Example Commands for Jupyter Image: docker pull jupyter\
