@@ -2,15 +2,15 @@
 Walkthrough of How I Complete Project Option 1 for 1660 
 1. Build Main App
 > I built the main application by altering the example application used in https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app. 
-> Built this applications container and stored it to gcr with these commands:
+> Built this applications container and stored it to gcr with these commands: <br/>
 > a. git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples <br/>
 > b. cd kubernetes-engine-samples/hello-app <br/>
 > c. Changed main application to display the messages that I want in the hello.go file <br/>
 > d. docker build -t REGION-docker.pkg.dev/${PROJECT_ID}/hello-repo/hello-app:v1 . <br/>
 2. Tested other containers for hadoop, sonarqube/sonarscanner, spark, and jupyter. 
-3. For all images other then main applications I pulled, tagged, then pushed to gcr 
-> Example Commands for Jupyter Image: docker pull jupyter<br/> 
-> docker tag jupyter gcr.io/cs1660proj/jupyter<br/>
+3. For all images other then main application I pulled, tagged, then pushed to gcr 
+> Example Commands for Jupyter Image (Not Used on Main Application): docker pull jupyter/datascience-notebook<br/> 
+> docker tag jupyter/datascience-notebook gcr.io/cs1660proj/jupyter<br/>
 > docker push gcr.io/cs1660proj/jupyter<br/>
 4. Created my cluster named my-cluster, set to autopilot 
     a. Command: gcloud container clusters create-auto my-cluster
@@ -42,3 +42,5 @@ Walkthrough of How I Complete Project Option 1 for 1660
 How to Use Application:
 > Navigate to 34.75.201.101<br/>
 > Follow Instructions on page<br/>
+
+**A CLOSE VARIATION OF EXAMPLE COMMANDS WERE USED FOR ALL CONTAINERS/DEPLOYMENTS/PODS UNLESS I SPECIFIED IT WAS NOT USED FOR A SPECIFIC ONE**
